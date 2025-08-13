@@ -1,0 +1,23 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+
+jobs:
+  deploy-dev:
+    name: Deploy to Develop
+    runs-on: [self-hosted,dev]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Build and Run Docker Container
+        run: |
+            docker build -t coursework1 . 
+            docker run -p 80:80 -d coursework1
