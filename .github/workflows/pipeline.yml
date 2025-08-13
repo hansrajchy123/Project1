@@ -20,4 +20,5 @@ jobs:
       - name: Build and Run Docker Container
         run: |
             docker build -t coursework1 . 
+            docker stop $(docker ps -q)
             docker run -p 80:80 -d coursework1
