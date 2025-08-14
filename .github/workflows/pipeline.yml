@@ -25,7 +25,6 @@ jobs:
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
-jobs:
   deploy-dev:
     name: Deploy to Develop
     runs-on: [self-hosted,dev]
